@@ -4,6 +4,7 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 
 import authRoutes from "./routes/authRoutes";
+import candidateRoutes from "./routes/candidateRoutes";
 
 dotenv.config();
 const app = express();
@@ -23,6 +24,7 @@ mongoose.connect(`${process.env.DATABASE_URL}`, {}, () =>
 
 // ROUTES
 app.use("/auth", authRoutes);
+app.use("/candidates", candidateRoutes);
 
 // LISTEN
 const port = process.env.PORT ? process.env.PORT : 5000;

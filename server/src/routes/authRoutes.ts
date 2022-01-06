@@ -3,6 +3,7 @@ import { User } from "../model/User";
 const Router = express.Router();
 import { compare, hash } from "bcryptjs";
 import { getAccessToken } from "../utils/tokenUtils";
+import authValidation from "../middleware/authValidation";
 
 const validEmailRegex = /\S+\@\S+/;
 
@@ -43,20 +44,20 @@ Router.post("/signup", async (req: Request, res: Response) => {
   try {
     const { phone, email, password } = req.body;
     if (!phone || !email || !password) {
-      res.json({ done: false, err: "Invalid input" });
+      res.json({ done: false, error: "Invalid input" });
       return;
     }
 
     // Check if email is valid
     if (!validEmailRegex.test(email)) {
-      res.json({ done: false, err: "Invalid email" });
+      res.json({ done: false, error: "Invalid email" });
       return;
     }
 
     // Check if email already exists
     const existingUser = await User.findOne({ email: email }).exec();
     if (existingUser) {
-      res.json({ done: false, err: "Email already exists" });
+      res.json({ done: false, error: "Email already exists" });
       return;
     }
 
@@ -74,6 +75,11 @@ Router.post("/signup", async (req: Request, res: Response) => {
     console.log("[ERROR]: " + err);
     res.json({ done: false, error: err });
   }
+});
+
+// Check if JWT is valid
+Router.get("/check", authValidation, (_req: Request, res: Response) => {
+  return res.json({ done: true });
 });
 
 export default Router;
