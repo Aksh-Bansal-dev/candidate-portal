@@ -1,0 +1,12 @@
+.row0 {
+  background: #e7f4fc;
+}
+.cell {
+  padding: 1vh;
+  font-weight: 300;
+}
+
+.icon {
+  margin: 0 1vh;
+  cursor: pointer;
+}

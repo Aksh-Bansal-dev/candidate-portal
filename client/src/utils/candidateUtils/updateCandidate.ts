@@ -8,7 +8,8 @@ export const updateCandidate = async (
   address: string,
   pincode: string,
   dob: string,
-  state: string
+  state: string,
+  result: string
 ): Promise<any> => {
   try {
     if (!isLogin()) {
@@ -20,9 +21,9 @@ export const updateCandidate = async (
       address,
       pincode,
       dob,
-      id,
+      _id: id,
       state,
-      result: "Shortlist",
+      result,
     };
     const res = await fetch(server + "/candidates/update", {
       method: "PUT",

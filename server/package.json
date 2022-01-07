@@ -1,5 +1,5 @@
 {
-  "name": "candidate-management-server",
+  "name": "candidate-portal-server",
   "version": "1.0.0",
   "description": "Backend for candidate management app",
   "main": "index.js",

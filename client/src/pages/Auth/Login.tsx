@@ -37,6 +37,7 @@ const Login: React.FC = () => {
         <div className={styles.label}>Email id</div>
         <input
           className={styles.input}
+          required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
@@ -46,6 +47,7 @@ const Login: React.FC = () => {
         <input
           className={styles.input}
           type="password"
+          required
           value={pass}
           onChange={(e) => setPass(e.target.value)}
           placeholder="enter your password"

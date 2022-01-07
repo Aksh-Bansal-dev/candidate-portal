@@ -57,6 +57,7 @@ const Signup: React.FC = () => {
           className={styles.input}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
           type="email"
           placeholder="enter your email id"
         />
@@ -66,6 +67,7 @@ const Signup: React.FC = () => {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           type="tel"
+          required
           placeholder="enter your phone number"
         />
         <div className={styles.label}>Password</div>
@@ -73,6 +75,7 @@ const Signup: React.FC = () => {
           className={styles.input}
           type="password"
           value={pass}
+          required
           onChange={(e) => setPass(e.target.value)}
           placeholder="enter your password"
         />

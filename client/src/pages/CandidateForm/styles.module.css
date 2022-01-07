@@ -2,7 +2,7 @@
   background-color: var(--card-bg);
   min-height: 60vh;
   padding-bottom: 2vh;
-  width: 40vw;
+  width: 70vw;
   box-shadow: 4px 4px 8px silver;
   border-radius: 5px;
   display: flex;
@@ -16,6 +16,15 @@
   margin: 3vh 0;
 }
 
+.authform {
+  width: 100%;
+}
+.section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .label {
   font-weight: bold;
   margin: 4vh 0 1vh 0;
@@ -25,6 +34,9 @@
   width: 30vw;
   border-radius: 2px;
   border: solid 1px silver;
+}
+.dobInput {
+  padding: 1.2vh 1vh;
 }
 .highlight {
   color: var(--blue);
@@ -38,7 +50,6 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
 }
 .btn {
@@ -47,6 +58,16 @@
   background-color: var(--blue);
   color: white;
   border: none;
+  font-weight: bold;
+  margin-left: 2vh;
+  cursor: pointer;
+}
+.btnSec {
+  height: 7vh;
+  width: 20vw;
+  border: solid 2px var(--blue);
+  color: var(--blue);
+  background-color: white;
   font-weight: bold;
   cursor: pointer;
 }
