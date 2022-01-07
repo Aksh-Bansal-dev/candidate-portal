@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { isLogin } from "src/utils/auth/isAuth";
-import { signup } from "src/utils/auth/signup";
+import { authCheck, signup } from "src/utils/auth";
 import styles from "./styles.module.css";
 
 export const validEmailRegex = /^\S+@\S+$/;
@@ -42,13 +41,7 @@ const Signup: React.FC = () => {
     }
   };
   useEffect(() => {
-    const redirect = async () => {
-      const login = await isLogin();
-      if (login) {
-        history.push("/");
-      }
-    };
-    redirect();
+    authCheck(history, false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

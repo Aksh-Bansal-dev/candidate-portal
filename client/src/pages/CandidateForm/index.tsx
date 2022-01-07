@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { getDate } from "src/utils/getDate";
-import { isLogin } from "../../utils/auth/isAuth";
-import { createCandidate } from "../../utils/candidateUtils/createCandidate";
-import { getCandidate } from "../../utils/candidateUtils/getCandidate";
-import { updateCandidate } from "../../utils/candidateUtils/updateCandidate";
+import {
+  createCandidate,
+  getCandidate,
+  updateCandidate,
+} from "src/utils/candidateUtils";
+import { authCheck } from "../../utils/auth";
+import { getDate } from "../../utils/getDate";
 import styles from "./styles.module.css";
 
 export const validEmailRegex = /^\S+@\S+$/;
@@ -63,13 +65,7 @@ const CandidateForm: React.FC = (props) => {
   };
 
   useEffect(() => {
-    const redirect = async () => {
-      const login = await isLogin();
-      if (!login) {
-        history.push("/login");
-      }
-    };
-    redirect();
+    authCheck(history, true);
     (async () => {
       if (params.id && params.id.length > 0) {
         setUpdate(true);

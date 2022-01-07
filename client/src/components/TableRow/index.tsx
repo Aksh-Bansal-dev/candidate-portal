@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { getDate } from "../../utils/getDate";
-import { deleteCandidate } from "../../utils/candidateUtils/deleteCandidate";
+import { deleteCandidate } from "../../utils/candidateUtils";
 import styles from "./styles.module.css";
 
 interface TableRowInterface {

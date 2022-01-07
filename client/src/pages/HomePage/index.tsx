@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { authCheck } from "../../utils/auth";
 import TableRow from "../../components/TableRow";
-import { isLogin } from "../../utils/auth/isAuth";
-import { getCandidates } from "../../utils/candidateUtils/getCandidates";
 import styles from "./styles.module.css";
+import { getCandidates } from "src/utils/candidateUtils";
 
 const HomePage: React.FC = () => {
   const history = useHistory();
   const [load, setLoad] = useState(true);
   const [cand, setCand] = useState([]);
   useEffect(() => {
-    const redirect = async () => {
-      const login = await isLogin();
-      if (!login) {
-        history.push("/login");
-      }
-    };
-    redirect();
+    authCheck(history, true);
     (async () => {
       const res = await getCandidates();
       if (res.done) {
