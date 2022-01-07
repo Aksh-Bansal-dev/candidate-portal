@@ -4,10 +4,10 @@ import { isLogin } from "src/utils/auth/isAuth";
 import { signup } from "src/utils/auth/signup";
 import styles from "./styles.module.css";
 
-export const validEmailRegex = /\S+@\S+/;
-export const validPhoneRegex = /[0-9]{10}/;
+export const validEmailRegex = /^\S+@\S+$/;
+export const validPhoneRegex = /^[0-9]{10}$/;
 export const validPassRegex =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%#*?&.])[A-Za-z\d@$!%*#?.&]{8,}$/;
 
 const Signup: React.FC = () => {
   const history = useHistory();
@@ -27,7 +27,9 @@ const Signup: React.FC = () => {
       return;
     }
     if (!validPassRegex.test(pass)) {
-      setErr("Invalid password");
+      setErr(
+        "Password should be contain at least One Uppercase , One lowercase, One Numeric, One Special Character"
+      );
       return;
     }
     const res = await signup(email, pass, phone);
@@ -35,7 +37,8 @@ const Signup: React.FC = () => {
       history.push("/login");
       setErr("");
     } else {
-      setErr("Invalid inputs");
+      if (res.error === "Email already exists") setErr(res.error);
+      else setErr("Invalid input");
     }
   };
   useEffect(() => {
@@ -88,8 +91,8 @@ const Signup: React.FC = () => {
             Login
           </Link>
         </div>
-        <div className={styles.feedback}>{err}</div>
       </form>
+      <div className={styles.feedback}>{err}</div>
     </div>
   );
 };

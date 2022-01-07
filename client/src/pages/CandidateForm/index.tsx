@@ -7,13 +7,14 @@ import { getCandidate } from "../../utils/candidateUtils/getCandidate";
 import { updateCandidate } from "../../utils/candidateUtils/updateCandidate";
 import styles from "./styles.module.css";
 
-export const validEmailRegex = /\S+@\S+/;
-export const validPinRegex = /[0-9]{6}/;
+export const validEmailRegex = /^\S+@\S+$/;
+export const validPinRegex = /^[0-9]{6}$/;
 
 const CandidateForm: React.FC = (props) => {
   const history = useHistory();
   const params: { id: string } = useParams();
 
+  const [update, setUpdate] = useState(false);
   const [email, setEmail] = useState("");
   const [err, setErr] = useState("");
   const [name, setName] = useState("");
@@ -33,7 +34,7 @@ const CandidateForm: React.FC = (props) => {
       setErr("Invalid Pincode");
       return;
     }
-    if (params.id && params.id.length > 1) {
+    if (update) {
       const res = await updateCandidate(
         params.id,
         name,
@@ -70,16 +71,19 @@ const CandidateForm: React.FC = (props) => {
     };
     redirect();
     (async () => {
-      const res = await getCandidate(params.id);
-      if (res.done) {
-        setEmail(res.data.email);
-        setName(res.data.name);
-        setAddress(res.data.address);
-        const date = getDate(res.data.dob);
-        setDob(date);
-        setState(res.data.state);
-        setPin(res.data.pincode);
-        setResult(res.data.result);
+      if (params.id && params.id.length > 0) {
+        setUpdate(true);
+        const res = await getCandidate(params.id);
+        if (res.done) {
+          setEmail(res.data.email);
+          setName(res.data.name);
+          setAddress(res.data.address);
+          const date = getDate(res.data.dob);
+          setDob(date);
+          setState(res.data.state);
+          setPin(res.data.pincode);
+          setResult(res.data.result);
+        }
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -88,7 +92,7 @@ const CandidateForm: React.FC = (props) => {
   return (
     <div className={styles.container}>
       <div className={styles.heading}>
-        {params.id.length > 0 ? "Update" : "Create"} Candidate
+        {update ? "Update" : "Create"} Candidate
       </div>
       <form className={styles.authform} onSubmit={handleSubmit}>
         <div className={styles.section}>
@@ -156,7 +160,7 @@ const CandidateForm: React.FC = (props) => {
             Cancel
           </button>
           <button type="submit" className={styles.btn}>
-            {params.id.length > 0 ? "Update" : "Create"}
+            {update ? "Update" : "Create"}
           </button>
         </div>
         <div className={styles.feedback}>{err}</div>

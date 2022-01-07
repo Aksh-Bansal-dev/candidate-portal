@@ -60,13 +60,15 @@
 
 .feedback {
   margin-top: 1vh;
+  font-size: 0.8rem;
+  padding: 0 1vh;
   color: rgb(177, 0, 0);
   text-align: center;
 }
 
 @media (max-width: 600px) {
   .container {
-    height: 60vh;
+    height: 70vh;
     width: 80vw;
   }
 
@@ -85,7 +87,7 @@
     border: solid 1px silver;
   }
   .btncontainer {
-    margin-top: 8vh;
+    margin-top: 3vh;
     width: 100%;
     display: flex;
     justify-content: center;

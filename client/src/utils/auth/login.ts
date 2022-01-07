@@ -15,7 +15,7 @@ export const login = async (email: string, password: string): Promise<any> => {
       localStorage.setItem("jid", data.accessToken);
       return data;
     } else {
-      console.log(data.err);
+      console.log(data.error);
       return data;
     }
   } catch (error) {

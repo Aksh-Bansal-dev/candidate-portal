@@ -26,3 +26,11 @@
 .tableHead th {
   padding: 1vh;
 }
+
+.highlight {
+  margin: 2vh 0;
+  width: 100%;
+}
+.highlight a {
+  color: var(--blue);
+}

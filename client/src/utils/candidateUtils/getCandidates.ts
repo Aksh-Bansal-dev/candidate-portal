@@ -15,7 +15,7 @@ export const getCandidates = async (): Promise<any> => {
     if (data.done) {
       return data;
     } else {
-      console.log(data.err);
+      console.log(data.error);
       return data;
     }
   } catch (error) {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import TableRow from "../../components/TableRow";
 import { isLogin } from "../../utils/auth/isAuth";
 import { getCandidates } from "../../utils/candidateUtils/getCandidates";
@@ -47,6 +47,9 @@ const HomePage: React.FC = () => {
           ))}
         </tbody>
       </table>
+      <div className={styles.highlight}>
+        <Link to="/create">+ Add new Candidate</Link>
+      </div>
     </div>
   );
 };

@@ -16,7 +16,7 @@ export const deleteCandidate = async (id: string): Promise<any> => {
     if (data.done) {
       return data;
     } else {
-      console.log(data.err);
+      console.log(data.error);
       return data;
     }
   } catch (error) {
