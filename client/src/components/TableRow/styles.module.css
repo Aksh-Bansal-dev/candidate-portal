@@ -10,3 +10,8 @@
   margin: 0 1vh;
   cursor: pointer;
 }
+
+.resSelect {
+  border: none;
+  background-color: transparent;
+}

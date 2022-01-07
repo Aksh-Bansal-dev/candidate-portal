@@ -54,6 +54,31 @@ Router.put("/update", authValidation, async (req: Request, res: Response) => {
   }
 });
 
+// Update candidate's result
+Router.put(
+  "/update-res",
+  authValidation,
+  async (req: Request, res: Response) => {
+    try {
+      const { _id, result } = req.body;
+      if (!_id) {
+        throw new Error("Bad request");
+      }
+      const updatedCandidate = {
+        result,
+      };
+      await Candidate.findByIdAndUpdate(_id, updatedCandidate);
+      res.status(200).json({ done: true });
+    } catch (err) {
+      console.log("[ERROR] " + err);
+      res.status(401).json({
+        done: false,
+        error: err,
+      });
+    }
+  }
+);
+
 // Get all candidates
 Router.get("/", authValidation, async (_req: Request, res: Response) => {
   try {

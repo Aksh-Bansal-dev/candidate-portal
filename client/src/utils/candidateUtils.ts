@@ -152,3 +152,35 @@ export const updateCandidate = async (
     console.log(error);
   }
 };
+
+export const updateCandidateResult = async (
+  id: string,
+  result: string
+): Promise<any> => {
+  try {
+    if (!isLogin()) {
+      return { done: false };
+    }
+    const body = {
+      _id: id,
+      result,
+    };
+    const res = await fetch(server + "/candidates/update-res", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "bearer " + localStorage.getItem("jid"),
+      },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    if (data.done) {
+      return data;
+    } else {
+      console.log(data.error);
+      return data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
