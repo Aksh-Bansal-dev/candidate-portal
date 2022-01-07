@@ -77,4 +77,16 @@ Router.get("/:id", authValidation, async (req: Request, res: Response) => {
   }
 });
 
+// Delete candidate
+Router.delete("/:id", authValidation, async (req: Request, res: Response) => {
+  try {
+    const cid = req.params.id;
+    const candidate = await Candidate.deleteOne({ _id: cid });
+    res.status(200).json({ done: true, data: candidate });
+  } catch (err) {
+    console.log("[ERROR]: " + err);
+    res.json({ done: false, error: err });
+  }
+});
+
 export default Router;

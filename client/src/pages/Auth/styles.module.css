@@ -1,0 +1,96 @@
+.container {
+  background-color: var(--card-bg);
+  min-height: 60vh;
+  padding-bottom: 2vh;
+  width: 40vw;
+  box-shadow: 4px 4px 8px silver;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin: 3vh 0;
+}
+
+.label {
+  font-weight: bold;
+  margin: 4vh 0 1vh 0;
+}
+.input {
+  padding: 1.5vh 1vh;
+  width: 30vw;
+  border-radius: 2px;
+  border: solid 1px silver;
+}
+.highlight {
+  color: var(--blue);
+  font-size: 0.8rem;
+  text-align: right;
+  margin: 0.5vh;
+}
+
+.btncontainer {
+  margin-top: 6vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.btn {
+  height: 7vh;
+  width: 20vw;
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.link {
+  margin-top: 0.5vh;
+  text-decoration: underline;
+  color: var(--blue);
+  text-align: center;
+}
+
+.feedback {
+  margin-top: 1vh;
+  color: rgb(177, 0, 0);
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .container {
+    height: 60vh;
+    width: 80vw;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .label {
+    font-weight: bold;
+    margin: 4vh 0 1vh 0;
+  }
+  .input {
+    padding: 1.5vh 1vh;
+    width: 70vw;
+    border-radius: 2px;
+    border: solid 1px silver;
+  }
+  .btncontainer {
+    margin-top: 8vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .btn {
+    height: 6vh;
+    width: 30vw;
+  }
+}
