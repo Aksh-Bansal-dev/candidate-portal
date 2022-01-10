@@ -34,3 +34,15 @@
 .highlight a {
   color: var(--blue);
 }
+.logout {
+  position: fixed;
+  top: 2vh;
+  right: 4vh;
+  height: 5vh;
+  width: 8vw;
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}

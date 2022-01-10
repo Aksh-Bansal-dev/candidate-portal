@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { authCheck } from "../../utils/auth";
+import { authCheck, logout } from "../../utils/auth";
 import TableRow from "../../components/TableRow";
 import styles from "./styles.module.css";
 import { getCandidates } from "src/utils/candidateUtils";
@@ -44,6 +44,15 @@ const HomePage: React.FC = () => {
       <div className={styles.highlight}>
         <Link to="/create">+ Add new Candidate</Link>
       </div>
+      <button
+        className={styles.logout}
+        onClick={() => {
+          logout();
+          window.location.reload();
+        }}
+      >
+        Logout
+      </button>
     </div>
   );
 };
